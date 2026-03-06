@@ -24,7 +24,7 @@ if __name__ == "__main__":
         elif your_choice == computer_choice:
             print("It's a tie!")
             tie += 1
-
+            
         elif (your_choice == ROCK and computer_choice == SCISSORS) or\
                 (your_choice == PAPER and computer_choice == ROCK) or\
                 (your_choice == SCISSORS and computer_choice == PAPER):

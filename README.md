@@ -10,3 +10,5 @@ Games
 -> echo "test" >> test.sh            #create a file using cmd in git
 -> git branch -d branch-name         #delete the branch
 -> git push origin --delete branch-name  #deleting from git repo
+
+-> git pull origin branch-name        #pulling the orgin data

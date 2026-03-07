@@ -38,7 +38,7 @@ def score(win, loss, tie):
     print(f"Wins: {win}, Losses: {loss}, Ties: {tie}")
     print(f"--------------------------------")
 
-def play_game()-> None:
+def play_vs_computer()-> None:
     life = win = loss = tie = 0
     while True and life < 3:
         your_choice, computer_choice = get_choice()
@@ -63,11 +63,32 @@ def play_game()-> None:
         if reset_counter:
             life = win = loss = tie = 0
             
-        
+def play_vs_player():
+    while True:
+        player1_choice = input("Player 1 - Enter your choice (R, P, S): ").lower()
+        player2_choice = input("Player 2 - Enter your choice (R, P, S): ").lower()
+        # Implement logic for two-player game here
+        if player1_choice not in choices or player2_choice not in choices:
+            print("Invalid choice. Please enter R/P/S.")
+            return
+        elif player1_choice == player2_choice:
+            print("It's a tie!")
+        elif (player1_choice == ROCK and player2_choice == SCISSORS) or\
+            (player1_choice == PAPER and player2_choice == ROCK) or\
+            (player1_choice == SCISSORS and player2_choice == PAPER):
+            print("Player 1 wins!")
+        else:
+            print("Player 2 wins!")
+        try_again = input("Press 'any key' to Play Again or 'q' to quit: ").lower()
+        if try_again == 'q':
+            print("Thanks for playing! Goodbye!")
+            return
+
 if __name__ == "__main__":
     ROCK : Constant = "r"
     PAPER : Constant = "p"
     SCISSORS : Constant = "s"
     choices = [ROCK, PAPER, SCISSORS]
     print("Welcome to the Rock, Paper, Scissors Game!")
-    play_game()
+    play_vs_player()
+    # play_vs_computer()

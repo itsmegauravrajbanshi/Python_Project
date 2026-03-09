@@ -11,12 +11,15 @@ def display_board(board):
     print('---+---+---')
 
 def get_move():
-    row = int(input("Enter the row (0-2): "))
-    col = int(input("Enter the column (0-2) "))
+    try:
+        row = int(input("Enter the row (0-2): "))
+        col = int(input("Enter the column (0-2) "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return get_move()
     return row, col
 
 print("Welcome to Tic Tac Toe!")
-display_board(board)
 player = ' X '
 while True: 
     print (f"Player {player}'s turn")
@@ -25,14 +28,14 @@ while True:
         board[row][col] = player
         display_board(board)
         
-        if board[0][0] == board[0][1] == board[0][2] != '   ' and board[0][0] == player\
-        or board[1][0] == board[1][1] == board[1][2] != '   ' and board[1][0] == player\
-        or board[2][0] == board[2][1] == board[2][2] != '   ' and board[2][0] == player\
-        or board[0][0] == board[1][0] == board[2][0] != '   ' and board[0][0] == player\
-        or board[0][1] == board[1][1] == board[2][1] != '   ' and board[0][1] == player\
-        or board[0][2] == board[1][2] == board[2][2] != '   ' and board[0][2] == player\
-        or board[0][0] == board[1][1] == board[2][2] != '   ' and board[0][0] == player\
-        or board[0][2] == board[1][1] == board[2][0] != '   ' and board[0][2] == player:
+        if board[0][0] == board[0][1] == board[0][2] == player\
+        or board[1][0] == board[1][1] == board[1][2] == player\
+        or board[2][0] == board[2][1] == board[2][2] == player\
+        or board[0][0] == board[1][0] == board[2][0] == player\
+        or board[0][1] == board[1][1] == board[2][1] == player\
+        or board[0][2] == board[1][2] == board[2][2] == player\
+        or board[0][0] == board[1][1] == board[2][2] == player\
+        or board[0][2] == board[1][1] == board[2][0] == player:
             print(f"{player} wins!")
             break
         # elif all(board[row][col] != '   ' for row in range(3) for col in range(3)):

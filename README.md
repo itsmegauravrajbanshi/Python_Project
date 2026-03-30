@@ -15,3 +15,5 @@ Games
 - press ':q' for exit
 - press ':wq' for save and exit
 
+->git reset .
+

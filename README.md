@@ -17,3 +17,4 @@ Games
 
 ->git reset .
 
+->git reset --hard origin/main  #(your branch and 'origin/main' have diverged)

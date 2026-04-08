@@ -108,11 +108,12 @@ def display_win(word, display_word):
         print("-"*25)
         return True
     
-def game_over():
+def game_over(word):
     print("-"*25)
     for i in hangman["6"]:
         print(i)
     print("Game Over!!!")
+    print("\nWord is "+word+"")
     print("-"*25)
 
 def play_game(won):
@@ -137,22 +138,21 @@ def play_game(won):
         if letter in word_set:
             print("Already Guess")
             continue
+        for i in range(len(word)):
+            if word[i] == letter:
+                word_set.add(word[i])
+                display_word[i] = word[i]
+                Good_guess = True
+        if Good_guess:
+            print("Good guess")
         else:
-            for i in range(len(word)):
-                if word[i] == letter:
-                    word_set.add(word[i])
-                    display_word[i] = word[i]
-                    Good_guess = True
-            if Good_guess:
-                print("Good guess")
-            else:
-                life += 1
-                print("Wrong guess")
+            life += 1
+            print("Wrong guess")
         if display_win(word, display_word):
             point += 1
             break
     if life == 6:
-        game_over()
+        game_over(word)
     won.append(point)
 
 if __name__ == "__main__":

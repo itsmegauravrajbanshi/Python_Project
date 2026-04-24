@@ -17,7 +17,13 @@ def start_game():
     cows_counts = 0
     bulls_counts = 0
     lst = []
-    number_of_digit = int(input("How many digits? : "))
+    while True:
+        number_of_digit = int(input("How many digits? : "))
+        if 1 < number_of_digit < 10:
+            break
+        else:
+            print("Valid only between (2-9) digits!")
+            continue 
     system_number = random.sample(range(10),number_of_digit)
     print(system_number)
     print(f"I have generate a {number_of_digit}-digits number try to guess it!")
@@ -36,18 +42,21 @@ def start_game():
                     cows_counts += 1
             print(f"{cows_counts} cows, {bulls_counts} bulls")
             if bulls_counts == number_of_digit:
-                print(f"Congratulation !!! You have won after {life} attemps.")
+                print(f"Congratulation !!! You won !")
                 return
         cows_counts = 0
         bulls_counts = 0
         lst.clear()
         life -= 1
         print(f"Remains {life} attemps. ")
+        if life == 0:
+            print("-"*25)
+            print("***Game over!***") 
     
 if __name__ == "__main__":
     print("Starting game...")
     while True:
         start_game()
-        play_again = input("Play again? (y/n) :")
+        play_again = input("\nPlay again? (y/n) :")
         if play_again.upper() == "N":
             break

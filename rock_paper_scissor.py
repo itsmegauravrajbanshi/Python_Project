@@ -24,25 +24,25 @@ def display_score(life, win, loss, tie)-> bool:
             print("It's a tie round!")
             total_tie += 1
         # print(f"Total Wins: {total_win}, Losses: {total_loss}, Total tie: {total_tie}")
-        should_continue = input("Press 'any key' to Play Again or 'q' to quit/total score: ").lower()
+        should_continue = input("\nPress 'any key' to Play Again or 'q' to quit/total score: ").lower()
         if should_continue == 'q':
-            print(f"-------------Total {round} Round Score------------")
-            print(f"Total Wins: {total_win}, Losses: {total_loss}, Total tie: {total_tie}")
-            print ("------------------------------------")
-            print("Thanks for playing! Goodbye!")
+            print(f"\n-----------------------Total Score---------------------")
+            print(f"Total Rounds: {round}, Total Wins: {total_win}, Losses: {total_loss}, Total tie: {total_tie}")
+            print ("---------------------------------------------------------")
+            print("Thanks for playing! Goodbye!\n")
             return
         return True
     
 def score(win, loss, tie):
-    print(f"---------{round} Round Score--------")
+    print(f"------------{round} Round Score-----------")
     print(f"Wins: {win}, Losses: {loss}, Ties: {tie}")
-    print(f"--------------------------------")
+    print(f"------------------------------------")
 
-def play_vs_computer()-> None:
+def player_vs_computer()-> None:
     life = win = loss = tie = 0
     while True and life < 3:
         your_choice, computer_choice = get_choice()
-
+        print("-> Computer choice : ", computer_choice)
         if your_choice not in choices:
             print("Invalid choice. Please enter R/P/S.")
             continue
@@ -63,10 +63,10 @@ def play_vs_computer()-> None:
         if reset_counter:
             life = win = loss = tie = 0
             
-def play_vs_player():
+def player_vs_player():
     while True:
-        player1_choice = input("Player 1 - Enter your choice (R, P, S): ").lower()
-        player2_choice = input("Player 2 - Enter your choice (R, P, S): ").lower()
+        player1_choice = input("Player 1\nEnter your choice (R, P, S): ").lower()
+        player2_choice = input("Player 2\nEnter your choice (R, P, S): ").lower()
         # Implement logic for two-player game here
         if player1_choice not in choices or player2_choice not in choices:
             print("Invalid choice. Please enter R/P/S.")
@@ -79,8 +79,8 @@ def play_vs_player():
             print("Player 1 wins!")
         else:
             print("Player 2 wins!")
-        try_again = input("Press 'any key' to Play Again or 'q' to quit: ").lower()
-        if try_again == 'q':
+        try_again = input("\nPlay Again (y/n): ").lower()
+        if try_again == 'n':
             print("Thanks for playing! Goodbye!")
             return
 
@@ -90,5 +90,12 @@ if __name__ == "__main__":
     SCISSORS : Constant = "s"
     choices = [ROCK, PAPER, SCISSORS]
     print("Welcome to the Rock, Paper, Scissors Game!")
-    play_vs_player()
-    # play_vs_computer()
+    print("1. Player vs Player")
+    print("2. Player vs computer")
+    choice = int(input("Choose : "))
+    if choice == 1:
+        player_vs_player()
+    elif choice == 2:  
+        player_vs_computer()
+    else:
+        print("Invalid Choice!")

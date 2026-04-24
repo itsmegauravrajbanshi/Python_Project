@@ -50,7 +50,7 @@ if __name__ == "__main__":
             print("Insufficent Balance!!!")
             break
 
-        play_again = input("Do you want to play again? (y/n) :")
+        play_again = input("Press 'anykey' to play again? (y/n) :")
         if play_again == 'n':
             break
         
